@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MS Detail Studio — PPF, Vitrificação e PS12 em São Bernardo do Campo</title>
+<meta name="description" content="Proteja a pintura do seu carro antes do primeiro risco. PPF transparente ou fosco, vitrificação cerâmica e película anti-vandalismo PS12, com agenda semanal limitada em São Bernardo do Campo.">
+<meta name="theme-color" content="#08080A">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="MS Detail Studio — A pintura do seu carro só se estraga uma vez">
+<meta property="og:description" content="PPF, vitrificação e PS12 aplicados com hora marcada. Agenda semanal limitada.">
+<meta property="og:image" content="fotos/hero-carro.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600&family=Saira+Condensed:wght@600;800;900&display=swap" rel="stylesheet">
+
+<!-- ==========================================================
+     AS 3 FOTOS DO SITE — salve nesta pasta com estes nomes:
+
+     fotos/hero-carro.jpg      → carro no topo (paisagem, lado esquerdo escuro)
+     fotos/ppf-aplicacao.webp   → aplicação em andamento (paisagem, bem larga)
+     fotos/vitrificacao.webp    → brilho/água escorrendo na pintura (paisagem)
+
+     Enquanto o arquivo não existir, o espaço mostra "Foto em breve".
+     Ideal: 1600px de largura, .webp ou .jpg, até 300 KB cada.
+
+     ONDE PERSONALIZAR NÚMEROS REAIS DO CLIENTE:
+     procure por [CONFIRMAR] neste arquivo — são os pontos de
+     autoridade e escassez que precisam do dado verdadeiro.
+     ========================================================== -->
+
+<style>
+/* ============================================================
+   MS DETAIL STUDIO — tokens
+   preto obsidiana / cromo / vermelho da marca / dourado
+   ============================================================ */
+:root{
+  --obsidiana:#08080A;
+  --carbono:#101013;
+  --cromo-claro:#F4F6F8;
+  --cromo:#B9BEC5;
+  --cromo-escuro:#6E747C;
+  --fumaca:#9AA0A8;
+  --vermelho:#C4161C;
+  --vermelho-claro:#E02730;
+  --ouro:#C9A227;
+  --ouro-claro:#F2D98C;
+  --linha:rgba(255,255,255,.09);
+  --zap:#25D366;
+
+  --display:"Saira Condensed",Impact,sans-serif;
+  --corpo:"Barlow",system-ui,-apple-system,sans-serif;
+
+  --pad:22px;
+  --chanfro:16px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  background:var(--obsidiana);
+  color:var(--cromo);
+  font-family:var(--corpo);
+  font-weight:300;
+  font-size:16px;
+  line-height:1.65;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--vermelho);color:#fff}
+:focus-visible{outline:2px solid var(--ouro-claro);outline-offset:3px}
+
+.wrap{width:100%;max-width:1120px;margin:0 auto;padding:0 var(--pad)}
+
+/* ---------- tipografia ---------- */
+h1,h2,h3,.display{
+  font-family:var(--display);
+  font-weight:800;
+  text-transform:uppercase;
+  line-height:.94;
+  letter-spacing:-.005em;
+  color:var(--cromo-claro);
+}
+.cromo{
+  background:linear-gradient(176deg,#FFFFFF 0%,#DDE2E8 32%,#7F868E 50%,#F6F8FA 62%,#A9AFB7 100%);
+  -webkit-background-clip:text;background-clip:text;
+  color:transparent;
+}
+.rotulo{
+  font-family:var(--corpo);
+  font-size:11px;font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:.22em;
+  color:var(--ouro);
+}
+.rotulo--cinza{color:var(--cromo-escuro)}
+.faisca{width:13px;height:13px;flex:none;color:var(--ouro-claro)}
+
+/* ---------- moldura de foto ---------- */
+.quadro{
+  position:relative;overflow:hidden;
+  background:linear-gradient(160deg,#17171C,#0A0A0D);
+  border:1px solid var(--linha);
+}
+.quadro img{width:100%;height:100%;object-fit:cover;display:block}
+.quadro.sem-foto img{display:none}
+.quadro.sem-foto::after{
+  content:"Foto em breve";
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#3E434A;
+}
+
+/* ---------- header ---------- */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:60;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:12px var(--pad);
+  padding-top:calc(12px + env(safe-area-inset-top));
+  transition:background .3s ease,border-color .3s ease;
+  border-bottom:1px solid transparent;
+}
+header.fixo{
+  background:rgba(8,8,10,.86);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom-color:var(--linha);
+}
+.marca-topo{display:flex;align-items:center;gap:9px}
+.marca-topo .sigla{font-family:var(--display);font-weight:900;font-size:19px;letter-spacing:.02em}
+.marca-topo .sub{font-size:9.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--ouro);font-weight:600;line-height:1;padding-top:2px}
+.tel-topo{
+  display:flex;align-items:center;gap:7px;
+  font-size:13px;font-weight:500;color:var(--cromo-claro);
+  border:1px solid var(--linha);padding:7px 13px;
+  background:rgba(8,8,10,.4);
+  transition:border-color .25s ease,color .25s ease;
+}
+.tel-topo:hover{border-color:var(--vermelho);color:#fff}
+.tel-topo svg{width:13px;height:13px;color:var(--ouro)}
+
+/* ============ HERO — GANCHO ============ */
+.hero{
+  position:relative;
+  min-height:100svh;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding-top:120px;padding-bottom:52px;
+  overflow:hidden;isolation:isolate;
+  background:linear-gradient(180deg,#101015 0%,#08080A 55%,#0B0B0E 100%);
+}
+.hero-foto{position:absolute;inset:0;z-index:-3;overflow:hidden}
+.hero-foto img{
+  width:100%;height:100%;object-fit:cover;
+  filter:grayscale(.28) contrast(1.08) brightness(.62);
+  transform:scale(1.06);
+  animation:respirar 26s ease-in-out infinite alternate;
+}
+.hero-foto.sem-foto img{display:none}
+@keyframes respirar{from{transform:scale(1.06)}to{transform:scale(1.13)}}
+.hero::before{
+  content:"";position:absolute;inset:0;z-index:-2;
+  background:
+    linear-gradient(180deg,rgba(8,8,10,.86) 0%,rgba(8,8,10,.34) 32%,rgba(8,8,10,.88) 74%,var(--obsidiana) 100%),
+    radial-gradient(105% 62% at 18% 96%,rgba(8,8,10,.92) 0%,transparent 68%);
+}
+.hero::after{
+  content:"";position:absolute;top:-20%;left:-40%;width:70%;height:150%;z-index:-1;
+  background:linear-gradient(96deg,transparent 0%,rgba(255,255,255,.05) 42%,rgba(255,255,255,.1) 50%,rgba(255,255,255,.045) 58%,transparent 100%);
+  transform:rotate(9deg);filter:blur(14px);
+  animation:varrer 11s cubic-bezier(.45,0,.25,1) infinite;
+  pointer-events:none;
+}
+@keyframes varrer{
+  0%,12%{transform:translateX(-30%) rotate(9deg);opacity:0}
+  30%,70%{opacity:1}
+  100%{transform:translateX(200%) rotate(9deg);opacity:0}
+}
+.hero .risco{
+  position:absolute;top:0;right:16%;width:1px;height:100%;z-index:-1;
+  background:linear-gradient(180deg,transparent 0%,rgba(196,22,28,.75) 45%,rgba(196,22,28,0) 100%);
+  transform:rotate(11deg) scaleY(1.4);transform-origin:top;
+}
+.hero .wrap{position:relative;z-index:1}
+
+.marca-hero{margin-bottom:34px}
+.marca-hero img{width:170px}
+.marca-hero .lockup .ms{font-family:var(--display);font-weight:900;font-size:58px;line-height:.8;letter-spacing:.01em}
+.marca-hero .lockup .ds{
+  font-family:var(--corpo);font-weight:500;font-size:13px;
+  letter-spacing:.34em;text-transform:uppercase;margin-top:8px;
+  background:linear-gradient(180deg,var(--ouro-claro),var(--ouro));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.marca-hero.tem-logo .lockup{display:none}
+.marca-hero:not(.tem-logo) img{display:none}
+
+.hero h1{font-size:clamp(37px,11vw,72px);margin:16px 0 20px;max-width:16ch}
+.hero h1 em{font-style:normal;color:var(--vermelho-claro)}
+.hero p.chamada{font-size:16.5px;max-width:46ch;color:var(--fumaca);margin-bottom:14px}
+.hero p.chamada strong{color:var(--cromo-claro);font-weight:500}
+.hero .agenda-nota{
+  display:inline-flex;align-items:center;gap:9px;
+  font-size:12.5px;font-weight:500;color:var(--ouro-claro);
+  border:1px solid rgba(201,162,39,.35);
+  background:rgba(201,162,39,.07);
+  padding:9px 14px;margin-bottom:26px;
+}
+.hero .agenda-nota .ponto{
+  width:7px;height:7px;border-radius:50%;background:var(--ouro);
+  box-shadow:0 0 0 0 rgba(201,162,39,.5);
+  animation:pulsar-ouro 2.4s infinite;
+}
+@keyframes pulsar-ouro{
+  0%{box-shadow:0 0 0 0 rgba(201,162,39,.45)}
+  70%{box-shadow:0 0 0 9px rgba(201,162,39,0)}
+  100%{box-shadow:0 0 0 0 rgba(201,162,39,0)}
+}
+
+.acoes{display:flex;flex-wrap:wrap;gap:11px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  font-family:var(--corpo);font-size:14px;font-weight:600;
+  letter-spacing:.06em;text-transform:uppercase;
+  padding:16px 26px;border:1px solid transparent;cursor:pointer;
+  transition:transform .2s ease,background .25s ease,border-color .25s ease,color .25s ease;
+}
+.btn:active{transform:translateY(1px)}
+.btn--primario{background:var(--vermelho);color:#fff}
+.btn--primario:hover{background:var(--vermelho-claro)}
+.btn--fantasma{border-color:rgba(255,255,255,.24);color:var(--cromo-claro);background:rgba(8,8,10,.35)}
+.btn--fantasma:hover{border-color:var(--ouro);color:var(--ouro-claro)}
+.btn svg{width:16px;height:16px}
+
+/* ---------- faixa de autoridade ---------- */
+.faixa{border-top:1px solid var(--linha);border-bottom:1px solid var(--linha);background:var(--carbono)}
+.faixa .grade{display:grid;grid-template-columns:1fr}
+.faixa .item{padding:24px var(--pad);border-bottom:1px solid var(--linha);display:flex;gap:14px;align-items:flex-start}
+.faixa .item:last-child{border-bottom:none}
+.faixa .item h4{font-family:var(--corpo);font-size:14px;font-weight:600;color:var(--cromo-claro);text-transform:none;letter-spacing:0;margin-bottom:3px}
+.faixa .item p{font-size:14px;color:var(--cromo-escuro);line-height:1.5}
+
+/* ---------- seções ---------- */
+section{padding:86px 0}
+.cabeca{margin-bottom:44px;max-width:40ch}
+.cabeca .rotulo{display:block;margin-bottom:14px}
+.cabeca h2{font-size:clamp(30px,8.4vw,52px);margin-bottom:16px}
+.cabeca h2 em{font-style:normal;color:var(--vermelho-claro)}
+.cabeca p{color:var(--fumaca);font-size:16px}
+.cabeca p strong{color:var(--cromo-claro);font-weight:500}
+
+/* ---------- dor / agitação ---------- */
+.dor{background:var(--obsidiana)}
+.dores{display:grid;grid-template-columns:1fr;gap:2px;border-top:1px solid var(--linha)}
+.dor-item{
+  padding:26px 0;border-bottom:1px solid var(--linha);
+  display:grid;grid-template-columns:30px 1fr;gap:16px;align-items:start;
+}
+.dor-item svg{width:20px;height:20px;color:var(--vermelho-claro);margin-top:4px}
+.dor-item h4{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:19px;color:var(--cromo-claro);margin-bottom:6px;letter-spacing:0}
+.dor-item p{font-size:14.5px;color:var(--fumaca)}
+.dor .virada{
+  margin-top:36px;font-size:17px;color:var(--cromo-claro);font-weight:400;
+  max-width:52ch;line-height:1.6;
+  border-left:2px solid var(--ouro);padding-left:18px;
+}
+.dor .virada strong{font-weight:600;color:var(--ouro-claro)}
+
+/* ---------- serviços / mecanismo ---------- */
+.servicos{display:grid;grid-template-columns:1fr;gap:14px}
+.moldura{
+  padding:1px;
+  background:linear-gradient(150deg,rgba(255,255,255,.20),rgba(255,255,255,.045) 38%,rgba(255,255,255,.02) 70%);
+  clip-path:polygon(0 0,calc(100% - var(--chanfro)) 0,100% var(--chanfro),100% 100%,var(--chanfro) 100%,0 calc(100% - var(--chanfro)));
+  transition:background .3s ease;
+}
+.moldura:hover{background:linear-gradient(150deg,rgba(196,22,28,.9),rgba(255,255,255,.06) 45%,rgba(255,255,255,.02) 75%)}
+.card{
+  background:var(--carbono);
+  clip-path:polygon(0 0,calc(100% - var(--chanfro)) 0,100% var(--chanfro),100% 100%,var(--chanfro) 100%,0 calc(100% - var(--chanfro)));
+  padding:30px 26px 32px;height:100%;position:relative;overflow:hidden;
+}
+.card::after{
+  content:"";position:absolute;top:0;left:-70%;width:45%;height:100%;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.06),transparent);
+  transition:left .75s cubic-bezier(.4,0,.2,1);pointer-events:none;
+}
+.moldura:hover .card::after{left:130%}
+.card .rotulo{display:flex;align-items:center;gap:8px;margin-bottom:16px}
+.card h3{font-size:25px;margin-bottom:6px;letter-spacing:0}
+.card .promessa{
+  font-size:13px;font-weight:600;letter-spacing:.04em;
+  color:var(--ouro-claro);margin-bottom:12px;text-transform:none;
+}
+.card p{font-size:15px;color:var(--fumaca);line-height:1.6}
+.card ul{list-style:none;margin-top:16px;display:flex;flex-direction:column;gap:8px}
+.card li{font-size:13.5px;color:var(--cromo-escuro);padding-left:16px;position:relative;line-height:1.5}
+.card li::before{content:"";position:absolute;left:0;top:9px;width:5px;height:5px;background:var(--ouro);transform:rotate(45deg)}
+.card.destaque{background:linear-gradient(165deg,#17171C 0%,var(--carbono) 60%)}
+
+/* ---------- banda de foto ---------- */
+.banda{position:relative;padding:0;border-top:1px solid var(--linha);border-bottom:1px solid var(--linha)}
+.banda .quadro{border:none;height:clamp(300px,66vw,480px)}
+.banda .quadro img{filter:grayscale(.2) contrast(1.05) brightness(.7)}
+.banda .veu{
+  position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(8,8,10,.93) 0%,rgba(8,8,10,.55) 52%,rgba(8,8,10,.22) 100%);
+  display:flex;align-items:flex-end;padding:0 0 34px;
+}
+.banda .texto{max-width:36ch}
+.banda .rotulo{display:block;margin-bottom:12px}
+.banda h3{font-size:clamp(26px,7vw,42px);margin-bottom:12px}
+.banda p{font-size:15px;color:var(--fumaca)}
+.banda p strong{color:var(--cromo-claro);font-weight:500}
+
+/* ---------- processo ---------- */
+.processo{border-top:1px solid var(--linha)}
+.etapas{display:flex;flex-direction:column}
+.etapa{display:grid;grid-template-columns:54px 1fr;gap:18px;padding:26px 0;border-bottom:1px solid var(--linha)}
+.etapa:first-child{border-top:1px solid var(--linha)}
+.etapa .num{font-family:var(--display);font-weight:900;font-size:34px;line-height:1;color:transparent;-webkit-text-stroke:1px var(--cromo-escuro)}
+.etapa h4{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:20px;color:var(--cromo-claro);margin-bottom:6px;letter-spacing:0}
+.etapa p{font-size:14.5px;color:var(--fumaca)}
+
+/* ---------- escassez / agenda ---------- */
+.agenda{background:var(--carbono);border-top:1px solid var(--linha);border-bottom:1px solid var(--linha)}
+.agenda-caixa{
+  border:1px solid rgba(201,162,39,.3);
+  background:linear-gradient(165deg,rgba(201,162,39,.06),transparent 55%);
+  padding:34px 26px;
+  clip-path:polygon(0 0,calc(100% - var(--chanfro)) 0,100% var(--chanfro),100% 100%,var(--chanfro) 100%,0 calc(100% - var(--chanfro)));
+}
+.agenda-caixa .rotulo{display:flex;align-items:center;gap:9px;margin-bottom:16px}
+.agenda-caixa h3{font-size:clamp(26px,7.4vw,40px);margin-bottom:14px}
+.agenda-caixa p{font-size:15.5px;color:var(--fumaca);max-width:56ch}
+.agenda-caixa p strong{color:var(--cromo-claro);font-weight:500}
+.agenda-caixa .btn{margin-top:24px}
+
+/* ---------- formulário + foto ---------- */
+.form-secao{border-bottom:1px solid var(--linha)}
+.form-grade{display:grid;grid-template-columns:1fr;gap:36px;align-items:start}
+.form-foto .quadro{
+  height:clamp(230px,55vw,340px);
+  clip-path:polygon(0 0,calc(100% - var(--chanfro)) 0,100% var(--chanfro),100% 100%,var(--chanfro) 100%,0 calc(100% - var(--chanfro)));
+}
+.form-foto .quadro img{filter:contrast(1.06) brightness(.9)}
+.form-foto .legenda{
+  display:flex;align-items:center;gap:9px;margin-top:14px;
+  font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--cromo-escuro);
+}
+
+form{display:flex;flex-direction:column;gap:20px}
+.campo{display:flex;flex-direction:column;gap:8px}
+.campo label{font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--cromo-escuro)}
+.campo input,.campo select{
+  font-family:var(--corpo);font-size:16px;font-weight:400;
+  color:var(--cromo-claro);background:var(--obsidiana);
+  border:1px solid var(--linha);border-radius:0;
+  padding:15px 16px;width:100%;
+  transition:border-color .25s ease,background .25s ease;
+  appearance:none;-webkit-appearance:none;
+}
+.campo input::placeholder{color:#4C5158}
+.campo input:focus,.campo select:focus{border-color:var(--ouro);background:#0C0C0F;outline:none}
+.campo select{
+  background-image:url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23C9A227' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 14px center;background-size:17px;padding-right:44px;
+}
+.campo select option{background:#0C0C0F;color:var(--cromo-claro)}
+form .btn{width:100%;padding:19px 26px;font-size:15px}
+.aviso{font-size:12.5px;color:var(--cromo-escuro);line-height:1.5}
+.erro{color:var(--vermelho-claro);font-size:12.5px;display:none}
+.erro.on{display:block}
+
+/* ---------- objeções / FAQ ---------- */
+.faq details{border-bottom:1px solid var(--linha)}
+.faq details:first-of-type{border-top:1px solid var(--linha)}
+.faq summary{
+  list-style:none;cursor:pointer;
+  padding:22px 34px 22px 0;position:relative;
+  font-family:var(--corpo);font-size:16px;font-weight:500;color:var(--cromo-claro);
+  transition:color .25s ease;
+}
+.faq summary:hover{color:var(--ouro-claro)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{
+  content:"+";position:absolute;right:4px;top:50%;transform:translateY(-50%);
+  font-family:var(--display);font-weight:600;font-size:24px;color:var(--ouro);
+  transition:transform .25s ease;
+}
+.faq details[open] summary::after{transform:translateY(-50%) rotate(45deg)}
+.faq .resposta{padding:0 0 24px;font-size:15px;color:var(--fumaca);max-width:60ch}
+.faq .resposta strong{color:var(--cromo-claro);font-weight:500}
+
+/* ---------- contato ---------- */
+.contato .blocos{display:flex;flex-direction:column;gap:2px;border-top:1px solid var(--linha)}
+.bloco{padding:26px 0;border-bottom:1px solid var(--linha);display:flex;gap:16px;align-items:flex-start}
+.bloco svg.ico{width:19px;height:19px;color:var(--vermelho-claro);flex:none;margin-top:3px}
+.bloco .rotulo{display:block;margin-bottom:6px}
+.bloco p,.bloco a.dado{font-size:17px;color:var(--cromo-claro);font-weight:400;line-height:1.45}
+.bloco a.dado{border-bottom:1px solid rgba(255,255,255,.2);padding-bottom:1px}
+.bloco a.dado:hover{border-color:var(--ouro)}
+.bloco small{display:block;font-size:13px;color:var(--cromo-escuro);margin-top:6px}
+
+/* ---------- rodapé ---------- */
+footer{padding:44px 0 130px;border-top:1px solid var(--linha);text-align:center}
+footer .sigla{font-family:var(--display);font-weight:900;font-size:28px;letter-spacing:.02em}
+footer .ds{font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:var(--ouro);margin-top:6px;font-weight:600}
+footer p{font-size:12.5px;color:#4C5158;margin-top:20px;line-height:1.7}
+
+/* ---------- WhatsApp fixo ---------- */
+.zap-fixo{
+  position:fixed;z-index:80;right:16px;
+  bottom:calc(16px + env(safe-area-inset-bottom));
+  display:inline-flex;align-items:center;gap:10px;
+  padding:14px 20px 14px 16px;
+  background:linear-gradient(150deg,#17171C,#0C0C0F);
+  border:1px solid rgba(255,255,255,.16);
+  color:var(--cromo-claro);
+  font-size:14px;font-weight:600;letter-spacing:.04em;
+  box-shadow:0 12px 34px rgba(0,0,0,.6);
+  clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px));
+  transition:transform .22s ease,border-color .22s ease;
+}
+.zap-fixo:hover{transform:translateY(-2px);border-color:var(--zap)}
+.zap-fixo svg{width:22px;height:22px;color:var(--zap);flex:none}
+.zap-fixo .pulso{
+  position:absolute;left:16px;top:50%;transform:translateY(-50%);
+  width:22px;height:22px;border-radius:50%;
+  box-shadow:0 0 0 0 rgba(37,211,102,.45);
+  animation:pulsar 2.6s infinite;pointer-events:none;
+}
+@keyframes pulsar{
+  0%{box-shadow:0 0 0 0 rgba(37,211,102,.4)}
+  70%{box-shadow:0 0 0 14px rgba(37,211,102,0)}
+  100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}
+}
+
+/* ---------- revelação ---------- */
+.revela{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.3,1)}
+.revela.visivel{opacity:1;transform:none}
+
+/* ---------- desktop ---------- */
+@media (min-width:768px){
+  :root{--pad:40px}
+  .faixa .grade{grid-template-columns:repeat(3,1fr)}
+  .faixa .item{border-bottom:none;border-right:1px solid var(--linha)}
+  .faixa .item:last-child{border-right:none}
+  .dores{grid-template-columns:repeat(3,1fr);gap:0}
+  .dor-item{border-right:1px solid var(--linha);padding:28px 24px 28px 0}
+  .dor-item:last-child{border-right:none;padding-left:24px}
+  .dor-item:nth-child(2){padding-left:24px}
+  .servicos{grid-template-columns:repeat(2,1fr);gap:16px}
+  .servicos .moldura:first-child{grid-column:1/-1}
+  .banda .veu{padding-bottom:46px}
+  .etapas{display:grid;grid-template-columns:repeat(2,1fr);column-gap:44px}
+  .etapa:nth-child(2){border-top:1px solid var(--linha)}
+  .agenda-caixa{padding:46px 44px}
+  .form-grade{grid-template-columns:0.9fr 1.1fr;gap:48px}
+  .form-foto .quadro{height:clamp(340px,40vw,470px)}
+  .contato .blocos{flex-direction:row;gap:0}
+  .bloco{flex:1;padding:30px 30px 30px 0;border-bottom:none;border-right:1px solid var(--linha)}
+  .bloco:last-child{border-right:none;padding-right:0;padding-left:30px}
+  section{padding:110px 0}
+  .banda{padding:0}
+  .hero h1{font-size:clamp(56px,6.4vw,84px)}
+  .marca-hero .lockup .ms{font-size:74px}
+  .zap-fixo{right:28px;bottom:28px}
+}
+@media (min-width:1024px){
+  .servicos{grid-template-columns:repeat(3,1fr)}
+  .servicos .moldura:first-child{grid-column:span 3}
+}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .hero::after,.pulso,.hero-foto img,.agenda-nota .ponto{animation:none}
+  .revela{opacity:1;transform:none;transition:none}
+  .card::after{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header id="topo">
+  <a href="#inicio" class="marca-topo" aria-label="MS Detail Studio, início">
+    <span class="sigla cromo">MS</span>
+    <span class="sub">Detail Studio</span>
+  </a>
+  <a class="tel-topo" href="tel:+5511972866592">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    (11) 97286-6592
+  </a>
+</header>
+
+<!-- ============ HERO — O GANCHO ============ -->
+<main id="inicio" class="hero">
+  <div class="hero-foto quadro" data-foto>
+    <img src="fotos/hero-carro.jpg" alt="Carro protegido pela MS Detail Studio" fetchpriority="high">
+  </div>
+  <span class="risco" aria-hidden="true"></span>
+
+  <div class="wrap">
+    <div class="marca-hero" id="marcaHero">
+      <img src="logo-ms.png" alt="MS Detail Studio" id="logoImg">
+      <div class="lockup">
+        <div class="ms cromo">MS</div>
+        <div class="ds">Detail Studio</div>
+      </div>
+    </div>
+
+    <span class="rotulo">Proteção automotiva premium · São Bernardo do Campo</span>
+
+    <h1><span class="cromo">A pintura do seu carro</span> só se estraga <em>uma vez</em></h1>
+
+    <p class="chamada">
+      Depois do primeiro pedrisco, não tem produto que devolva o original.
+      <strong>PPF, vitrificação e blindagem de vidros PS12</strong> — a proteção entra antes do dano, ou não entra.
+    </p>
+
+    <span class="agenda-nota">
+      <span class="ponto" aria-hidden="true"></span>
+      Aplicação com hora marcada · agenda semanal limitada
+    </span>
+
+    <div class="acoes">
+      <a class="btn btn--primario" href="#" data-zap data-msg="Olá! Vim pelo site e quero garantir um horário na agenda da MS Detail Studio.">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91C21.95 6.45 17.5 2 12.04 2zm5.8 14.03c-.24.68-1.42 1.31-1.95 1.36-.5.05-.96.23-3.25-.68-2.73-1.08-4.46-3.88-4.6-4.06-.13-.18-1.1-1.46-1.1-2.79s.7-1.98.95-2.25c.25-.27.54-.34.72-.34l.52.01c.17 0 .39-.06.61.47.23.55.78 1.9.85 2.04.07.14.12.3.02.48-.09.18-.14.29-.28.45l-.42.49c-.14.14-.28.29-.12.57.16.27.72 1.18 1.54 1.91 1.06.94 1.95 1.23 2.22 1.37.27.14.43.12.59-.07.16-.18.68-.79.86-1.07.18-.27.36-.22.61-.13.25.09 1.6.75 1.87.89.27.14.45.2.52.32.07.11.07.64-.17 1.32z"/></svg>
+        Quero proteger meu carro
+      </a>
+      <a class="btn btn--fantasma" href="#servicos">Conhecer as proteções</a>
+    </div>
+  </div>
+</main>
+
+<!-- ============ FAIXA DE AUTORIDADE ============ -->
+<div class="faixa">
+  <div class="grade">
+    <div class="item">
+      <svg class="faisca" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0l2.2 8.4L22 12l-7.8 3.6L12 24l-2.2-8.4L2 12l7.8-3.6z"/></svg>
+      <div>
+        <h4>Studio, não lava-rápido</h4>
+        <p>Um carro por vez, em ambiente controlado. Ninguém aplica PPF no pátio.</p>
+      </div>
+    </div>
+    <div class="item">
+      <svg class="faisca" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0l2.2 8.4L22 12l-7.8 3.6L12 24l-2.2-8.4L2 12l7.8-3.6z"/></svg>
+      <div>
+        <h4>Material com garantia de fabricante</h4>
+        <p>Película de poliuretano autorregenerativo — não é insulfilm esticado no capô.</p>
+      </div>
+    </div>
+    <div class="item">
+      <svg class="faisca" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0l2.2 8.4L22 12l-7.8 3.6L12 24l-2.2-8.4L2 12l7.8-3.6z"/></svg>
+      <div>
+        <h4>Especialistas em proteção</h4>
+        <p>PPF, vitrificação e PS12 não são serviços extras aqui. São o centro do studio.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ DOR / AGITAÇÃO ============ -->
+<section class="dor">
+  <div class="wrap">
+    <div class="cabeca revela">
+      <span class="rotulo">O que ninguém te conta</span>
+      <h2 class="cromo">O dano não avisa.<br><em>Ele acumula.</em></h2>
+      <p>Você não vê o dia em que a pintura estraga — porque não é um dia. São meses de agressão pequena que viram um carro que <strong>vale menos do que deveria</strong> na hora de vender.</p>
+    </div>
+
+    <div class="dores">
+      <div class="dor-item revela">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M12 2v6M12 22a8 8 0 0 0 8-8c0-4-3-6-4-9-1 2-2 3-4 3s-3-1-4-3c-1 3-4 5-4 9a8 8 0 0 0 8 8z"/></svg>
+        <div>
+          <h4>Estrada</h4>
+          <p>Cada viagem na Anchieta é uma sessão de pedrisco no capô e no para-choque. O verniz perde a batalha aos poucos.</p>
+        </div>
+      </div>
+      <div class="dor-item revela">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M12 3v18M5.6 5.6l12.8 12.8M3 12h18M5.6 18.4L18.4 5.6"/></svg>
+        <div>
+          <h4>Rotina</h4>
+          <p>Lavagem com pano sujo, galho de estacionamento, unha na maçaneta. Micro-riscos que aparecem todos de uma vez no sol.</p>
+        </div>
+      </div>
+      <div class="dor-item revela">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M12 9v4M12 17h.01M10.3 3.9L1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>
+        <div>
+          <h4>Semáforo</h4>
+          <p>Vidro comum se quebra em segundos. Quem roda pelo ABC e por São Paulo sabe que isso não é cenário raro — é estatística.</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="virada revela">
+      A boa notícia: <strong>tudo isso é evitável</strong> — desde que a proteção entre enquanto a pintura ainda está intacta. Depois do dano, o que existe é correção. Antes dele, existe blindagem.
+    </p>
+  </div>
+</section>
+
+<!-- ============ MECANISMO / SERVIÇOS ============ -->
+<section id="servicos">
+  <div class="wrap">
+    <div class="cabeca revela">
+      <span class="rotulo">A solução</span>
+      <h2 class="cromo">Três camadas de proteção.<br>Um carro intocável.</h2>
+      <p>Cada proteção resolve uma ameaça diferente. Juntas, elas fazem o tempo passar pelo carro <strong>sem deixar marca</strong>.</p>
+    </div>
+
+    <div class="servicos">
+
+      <div class="moldura revela">
+        <article class="card destaque">
+          <span class="rotulo">
+            <svg class="faisca" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0l2.2 8.4L22 12l-7.8 3.6L12 24l-2.2-8.4L2 12l7.8-3.6z"/></svg>
+            A proteção definitiva
+          </span>
+          <h3 class="cromo">PPF — transparente ou fosco</h3>
+          <p class="promessa">O pedrisco bate na película. Nunca na sua pintura.</p>
+          <p>
+            Uma camada de poliuretano de grau aeronáutico sobre o verniz original. Ela absorve o impacto
+            que iria direto na tinta — e se regenera sozinha com o calor. No transparente, invisível.
+            No fosco, o carro ganha acabamento de edição especial sem repintura, e volta ao original
+            quando a película sair. É a diferença entre revender um carro com pintura de fábrica
+            e um carro "no estado".
+          </p>
+          <ul>
+            <li>Autorregenerável: micro-riscos somem sozinhos</li>
+            <li>Kit frontal, capô, colunas ou carro inteiro</li>
+            <li>Recorte por plotter no molde exato do seu modelo</li>
+            <li>Garantia de fabricante</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="moldura revela">
+        <article class="card">
+          <span class="rotulo rotulo--cinza">Blindagem de vidros</span>
+          <h3 class="cromo">Insulfilm PS12 anti-vandalismo</h3>
+          <p class="promessa">O vidro trinca. Mas não abre.</p>
+          <p>
+            Película de segurança de 12 mils — a mesma categoria usada em vitrine de joalheria.
+            No impacto, os estilhaços ficam presos e o vidro continua fechado. A tentativa de
+            arrombamento que levaria 3 segundos vira um esforço longo, barulhento e exposto.
+            De brinde: menos calor e proteção UV pra quem vai dentro.
+          </p>
+          <ul>
+            <li>Retarda arrombamento e furto de semáforo</li>
+            <li>Estilhaços presos à película, não no banco</li>
+            <li>Conforto térmico no trânsito parado</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="moldura revela">
+        <article class="card">
+          <span class="rotulo rotulo--cinza">Acabamento premium</span>
+          <h3 class="cromo">Vitrificação cerâmica</h3>
+          <p class="promessa">Brilho de showroom que dispensa esforço.</p>
+          <p>
+            Camada de sílica que sela a pintura. Água escorre em vez de secar manchando,
+            sujeira não ancora, e a lavagem vira um enxágue. É o carro sempre com cara
+            de recém-entregue — sem você virar refém de cera.
+          </p>
+          <ul>
+            <li>Efeito hidrofóbico duradouro</li>
+            <li>Barreira contra chuva ácida e seiva de árvore</li>
+            <li>Potencializa o PPF quando aplicada por cima</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="moldura revela">
+        <article class="card">
+          <span class="rotulo rotulo--cinza">Correção</span>
+          <h3 class="cromo">Polimento técnico</h3>
+          <p class="promessa">Pra pintura que já sofreu — e vai renascer.</p>
+          <p>
+            Riscos, hologramas e oxidação removidos com leitura de espessura antes de qualquer corte.
+            É a etapa que devolve a base perfeita — porque selar defeito é congelar defeito.
+          </p>
+          <ul>
+            <li>Medição de camada antes do corte</li>
+            <li>Do polimento comercial à correção em etapas</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="moldura revela">
+        <article class="card">
+          <span class="rotulo rotulo--cinza">Interior</span>
+          <h3 class="cromo">Higienização interna</h3>
+          <p class="promessa">Cheiro e toque de carro novo, de novo.</p>
+          <p>
+            Bancos, carpete, teto e sistema de ar tratados por extração profunda.
+            Pra quem transporta cliente, criança ou pet — e pra quem simplesmente
+            não aceita entrar num carro que não parece dele.
+          </p>
+          <ul>
+            <li>Extração de sujeira impregnada</li>
+            <li>Tratamento de couro e limpeza do ar-condicionado</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="moldura revela">
+        <article class="card">
+          <span class="rotulo rotulo--cinza">Manutenção</span>
+          <h3 class="cromo">Lavagem detalhada</h3>
+          <p class="promessa">A proteção que você fez, mantida por quem fez.</p>
+          <p>
+            Método dos dois baldes, descontaminação e secagem sem agressão. A cada visita,
+            a película passa por revisão visual — é o que mantém o investimento rendendo
+            pelos anos que ele foi feito pra durar.
+          </p>
+          <ul>
+            <li>Exclusiva pra carros protegidos no studio</li>
+            <li>Check-up do PPF incluso</li>
+          </ul>
+        </article>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOTO 2 — AUTORIDADE / BASTIDOR ============ -->
+<section class="banda">
+  <div class="quadro" data-foto>
+    <img src="fotos/ppf-aplicacao.jpg" alt="Aplicação de PPF em andamento no studio" loading="lazy">
+  </div>
+  <div class="veu">
+    <div class="wrap">
+      <div class="texto revela">
+        <span class="rotulo">Dentro do studio</span>
+        <h3 class="cromo">Por que a gente não faz "encaixe"</h3>
+        <p>Uma aplicação de PPF bem feita ocupa o box por dias — descontaminação, correção, recorte e cura. <strong>É exatamente por isso que ela dura anos.</strong> Quem promete pra amanhã está pulando etapa no seu carro.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESSO ============ -->
+<section class="processo">
+  <div class="wrap">
+    <div class="cabeca revela">
+      <span class="rotulo">Como funciona</span>
+      <h2 class="cromo">Do seu WhatsApp<br>à entrega das chaves</h2>
+      <p>Processo de studio: transparente do início ao fim, sem surpresa no meio.</p>
+    </div>
+
+    <div class="etapas">
+      <div class="etapa revela">
+        <span class="num">01</span>
+        <div>
+          <h4>Você chama no WhatsApp</h4>
+          <p>Manda o modelo, o ano e o que quer proteger. Em horário comercial, a resposta vem rápido — com orientação de quem faz isso todos os dias.</p>
+        </div>
+      </div>
+      <div class="etapa revela">
+        <span class="num">02</span>
+        <div>
+          <h4>Proposta sob medida</h4>
+          <p>Você recebe as opções pro seu carro — do kit frontal ao carro completo — com valores, prazos e o que cada nível cobre.</p>
+        </div>
+      </div>
+      <div class="etapa revela">
+        <span class="num">03</span>
+        <div>
+          <h4>Data reservada na agenda</h4>
+          <p>Seu carro entra com horário exclusivo. Nada de fila nem de box dividido: o tempo reservado é do seu carro.</p>
+        </div>
+      </div>
+      <div class="etapa revela">
+        <span class="num">04</span>
+        <div>
+          <h4>Entrega com você ao lado</h4>
+          <p>Conferência peça a peça e orientação de cuidado — o que pode, o que evitar e quando voltar pra revisão.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ESCASSEZ — AGENDA ============ -->
+<section class="agenda">
+  <div class="wrap">
+    <div class="agenda-caixa revela">
+      <span class="rotulo">
+        <span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--ouro)"></span>
+        Agenda da semana
+      </span>
+      <h3 class="cromo">Um carro por vez tem um preço: <br>poucas vagas por semana</h3>
+      <p>
+        Aplicação de PPF ocupa o box por dias. É o que garante o acabamento — e o que <strong>limita quantos carros o studio atende por semana</strong>.
+        Quem chama primeiro, escolhe a data. Quem deixa pra depois, entra na semana seguinte.
+      </p>
+      <a class="btn btn--primario" href="#" data-zap data-msg="Olá! Quero saber a disponibilidade da agenda da MS Detail Studio pra essa semana.">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91C21.95 6.45 17.5 2 12.04 2zm5.8 14.03c-.24.68-1.42 1.31-1.95 1.36-.5.05-.96.23-3.25-.68-2.73-1.08-4.46-3.88-4.6-4.06-.13-.18-1.1-1.46-1.1-2.79s.7-1.98.95-2.25c.25-.27.54-.34.72-.34l.52.01c.17 0 .39-.06.61.47.23.55.78 1.9.85 2.04.07.14.12.3.02.48-.09.18-.14.29-.28.45l-.42.49c-.14.14-.28.29-.12.57.16.27.72 1.18 1.54 1.91 1.06.94 1.95 1.23 2.22 1.37.27.14.43.12.59-.07.16-.18.68-.79.86-1.07.18-.27.36-.22.61-.13.25.09 1.6.75 1.87.89.27.14.45.2.52.32.07.11.07.64-.17 1.32z"/></svg>
+        Consultar vagas da semana
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FORMULÁRIO + FOTO 3 ============ -->
+<section class="form-secao" id="orcamento">
+  <div class="wrap">
+    <div class="cabeca revela">
+      <span class="rotulo">Reserve sua data</span>
+      <h2 class="cromo">Conte do seu carro</h2>
+      <p>Cinco respostas e a conversa já começa com proposta. O envio abre seu WhatsApp com tudo preenchido.</p>
+    </div>
+
+    <div class="form-grade">
+      <div class="form-foto revela">
+        <div class="quadro" data-foto>
+          <img src="fotos/vitrificacao.jpg" alt="Pintura vitrificada repelindo água" loading="lazy">
+        </div>
+        <span class="legenda">
+          <svg class="faisca" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0l2.2 8.4L22 12l-7.8 3.6L12 24l-2.2-8.4L2 12l7.8-3.6z"/></svg>
+          O resultado que você leva pra casa
+        </span>
+      </div>
+
+      <form id="formLead" class="revela" novalidate>
+        <div class="campo">
+          <label for="nome">Seu nome</label>
+          <input type="text" id="nome" name="nome" placeholder="Como podemos te chamar" autocomplete="name" required>
+        </div>
+
+        <div class="campo">
+          <label for="fone">WhatsApp</label>
+          <input type="tel" id="fone" name="fone" placeholder="(11) 90000-0000" autocomplete="tel" inputmode="numeric" maxlength="15" required>
+        </div>
+
+        <div class="campo">
+          <label for="carro">Carro (modelo e ano)</label>
+          <input type="text" id="carro" name="carro" placeholder="Ex.: Corolla Cross 2024" required>
+        </div>
+
+        <div class="campo">
+          <label for="servico">O que você quer proteger</label>
+          <select id="servico" name="servico" required>
+            <option value="" selected disabled>Escolha uma opção</option>
+            <option>PPF transparente</option>
+            <option>PPF fosco</option>
+            <option>Insulfilm PS12 anti-vandalismo</option>
+            <option>Vitrificação cerâmica</option>
+            <option>Polimento / correção de pintura</option>
+            <option>Higienização interna</option>
+            <option>Quero uma recomendação completa</option>
+          </select>
+        </div>
+
+        <div class="campo">
+          <label for="prazo">Quando quer agendar</label>
+          <select id="prazo" name="prazo" required>
+            <option value="" selected disabled>Escolha uma opção</option>
+            <option>Essa semana, se tiver vaga</option>
+            <option>Neste mês</option>
+            <option>Nos próximos 3 meses</option>
+            <option>Só pesquisando por enquanto</option>
+          </select>
+        </div>
+
+        <p class="erro" id="erroForm">Preencha os campos que faltam para continuar.</p>
+
+        <button type="submit" class="btn btn--primario">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91C21.95 6.45 17.5 2 12.04 2zm5.8 14.03c-.24.68-1.42 1.31-1.95 1.36-.5.05-.96.23-3.25-.68-2.73-1.08-4.46-3.88-4.6-4.06-.13-.18-1.1-1.46-1.1-2.79s.7-1.98.95-2.25c.25-.27.54-.34.72-.34l.52.01c.17 0 .39-.06.61.47.23.55.78 1.9.85 2.04.07.14.12.3.02.48-.09.18-.14.29-.28.45l-.42.49c-.14.14-.28.29-.12.57.16.27.72 1.18 1.54 1.91 1.06.94 1.95 1.23 2.22 1.37.27.14.43.12.59-.07.16-.18.68-.79.86-1.07.18-.27.36-.22.61-.13.25.09 1.6.75 1.87.89.27.14.45.2.52.32.07.11.07.64-.17 1.32z"/></svg>
+          Garantir minha data
+        </button>
+
+        <p class="aviso">Respondemos em horário comercial. Seus dados vão só para o WhatsApp do studio.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ QUEBRA DE OBJEÇÕES ============ -->
+<section class="faq">
+  <div class="wrap">
+    <div class="cabeca revela">
+      <span class="rotulo">Antes de decidir</span>
+      <h2 class="cromo">O que todo mundo pergunta</h2>
+    </div>
+
+    <div class="revela">
+      <details>
+        <summary>PPF vale a pena ou é luxo?</summary>
+        <p class="resposta">Faça a conta ao contrário: repintar um capô com pedrisco custa caro e <strong>derruba o valor de revenda</strong> — pintura de repintura nunca engana avaliador. O PPF custa uma fração disso e mantém o verniz de fábrica intacto. Em carro zero ou seminovo, não é luxo: é o seguro da parte do carro que mais desvaloriza.</p>
+      </details>
+      <details>
+        <summary>Dá pra ver que tem película no carro?</summary>
+        <p class="resposta">No transparente, não — a aplicação por molde plotado termina nas bordas das peças, sem emenda aparente. É comum o dono esquecer que ela está lá até o dia em que um risco se regenera sozinho no sol.</p>
+      </details>
+      <details>
+        <summary>Quanto tempo o carro fica no studio?</summary>
+        <p class="resposta">Depende do serviço: vitrificação e PS12 costumam ser mais rápidos; PPF de carro completo ocupa o box por dias, porque envolve preparação, recorte e cura. <strong>O prazo exato vai fechado na proposta</strong>, antes de você reservar a data.</p>
+      </details>
+      <details>
+        <summary>E se eu já tiver riscos na pintura?</summary>
+        <p class="resposta">Aí a ordem é: corrigir primeiro, proteger depois. O polimento técnico remove riscos e hologramas, e a proteção entra sobre a pintura já perfeita. Selar defeito é congelar defeito — aqui isso não acontece.</p>
+      </details>
+      <details>
+        <summary>Como recebo o preço?</summary>
+        <p class="resposta">Pelo WhatsApp mesmo: você manda modelo, ano e o que quer proteger, e recebe a proposta com as opções e valores. Sem cadastro, sem ligação de vendedor, sem enrolação.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTATO ============ -->
+<section class="contato" id="contato">
+  <div class="wrap">
+    <div class="cabeca revela">
+      <span class="rotulo">Onde estamos</span>
+      <h2 class="cromo">Conheça o studio</h2>
+      <p>Vale a visita: veja a película aplicada de perto e compare o transparente e o fosco no seu próprio carro.</p>
+    </div>
+
+    <div class="blocos revela">
+      <div class="bloco">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <div>
+          <span class="rotulo">Endereço</span>
+          <a class="dado" href="https://www.google.com/maps/search/?api=1&query=Av.%20Senador%20Vergueiro%2C%202519%20-%20S%C3%A3o%20Bernardo%20do%20Campo" target="_blank" rel="noopener">Av. Senador Vergueiro, 2519<br>São Bernardo do Campo — SP</a>
+          <small>Toque para abrir no mapa</small>
+        </div>
+      </div>
+
+      <div class="bloco">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <div>
+          <span class="rotulo">Contato</span>
+          <a class="dado" href="tel:+5511972866592">(11) 97286-6592</a>
+          <small>Ligação ou WhatsApp</small>
+        </div>
+      </div>
+
+      <div class="bloco">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        <div>
+          <span class="rotulo">Atendimento</span>
+          <p>Segunda a sexta, 8h às 18h<br>Sábado, 8h às 13h</p>
+          <small>Somente com hora marcada</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="sigla cromo">MS</div>
+    <div class="ds">Detail Studio</div>
+    <p>
+      Av. Senador Vergueiro, 2519 — São Bernardo do Campo/SP · (11) 97286-6592<br>
+      © <span id="ano"></span> MS Detail Studio. Todos os direitos reservados.
+    </p>
+  </div>
+</footer>
+
+<!-- ============ WHATSAPP FIXO ============ -->
+<a class="zap-fixo" href="#" data-zap data-msg="Olá! Vim pelo site da MS Detail Studio e quero falar sobre proteger meu carro." aria-label="Falar no WhatsApp">
+  <span class="pulso" aria-hidden="true"></span>
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91C21.95 6.45 17.5 2 12.04 2zm5.8 14.03c-.24.68-1.42 1.31-1.95 1.36-.5.05-.96.23-3.25-.68-2.73-1.08-4.46-3.88-4.6-4.06-.13-.18-1.1-1.46-1.1-2.79s.7-1.98.95-2.25c.25-.27.54-.34.72-.34l.52.01c.17 0 .39-.06.61.47.23.55.78 1.9.85 2.04.07.14.12.3.02.48-.09.18-.14.29-.28.45l-.42.49c-.14.14-.28.29-.12.57.16.27.72 1.18 1.54 1.91 1.06.94 1.95 1.23 2.22 1.37.27.14.43.12.59-.07.16-.18.68-.79.86-1.07.18-.27.36-.22.61-.13.25.09 1.6.75 1.87.89.27.14.45.2.52.32.07.11.07.64-.17 1.32z"/></svg>
+  WhatsApp
+</a>
+
+<script>
+(function(){
+  "use strict";
+
+  var NUMERO = "5511972866592";
+
+  /* ---- fotos que não carregaram viram painel "Foto em breve" ---- */
+  document.querySelectorAll("[data-foto]").forEach(function(box){
+    var im = box.querySelector("img");
+    if (!im) return;
+    im.addEventListener("error", function(){ box.classList.add("sem-foto"); });
+    if (im.complete && im.naturalWidth === 0) box.classList.add("sem-foto");
+  });
+
+  /* ---- logo: PNG se existir, senão lockup tipográfico ---- */
+  var img = document.getElementById("logoImg");
+  var marca = document.getElementById("marcaHero");
+  img.addEventListener("load", function(){ marca.classList.add("tem-logo"); });
+  if (img.complete && img.naturalWidth > 0) marca.classList.add("tem-logo");
+
+  /* ---- header sólido após rolar ---- */
+  var header = document.getElementById("topo");
+  function aoRolar(){ header.classList.toggle("fixo", window.scrollY > 40); }
+  aoRolar();
+  window.addEventListener("scroll", aoRolar, {passive:true});
+
+  /* ---- links de WhatsApp ---- */
+  function linkZap(msg){
+    return "https://wa.me/" + NUMERO + "?text=" + encodeURIComponent(msg);
+  }
+  document.querySelectorAll("[data-zap]").forEach(function(el){
+    el.setAttribute("href", linkZap(el.dataset.msg));
+    el.setAttribute("target","_blank");
+    el.setAttribute("rel","noopener");
+  });
+
+  /* ---- máscara de telefone ---- */
+  var fone = document.getElementById("fone");
+  fone.addEventListener("input", function(){
+    var v = fone.value.replace(/\D/g,"").slice(0,11);
+    if (v.length > 6)      v = "(" + v.slice(0,2) + ") " + v.slice(2,7) + "-" + v.slice(7);
+    else if (v.length > 2) v = "(" + v.slice(0,2) + ") " + v.slice(2);
+    else if (v.length > 0) v = "(" + v;
+    fone.value = v;
+  });
+
+  /* ---- envio do formulário ---- */
+  var form = document.getElementById("formLead");
+  var erro = document.getElementById("erroForm");
+
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+
+    var nome    = form.nome.value.trim();
+    var tel     = form.fone.value.trim();
+    var carro   = form.carro.value.trim();
+    var servico = form.servico.value;
+    var prazo   = form.prazo.value;
+
+    if (!nome || tel.replace(/\D/g,"").length < 10 || !carro || !servico || !prazo){
+      erro.classList.add("on");
+      return;
+    }
+    erro.classList.remove("on");
+
+    var msg =
+      "Olá! Vim pelo site da MS Detail Studio e quero reservar uma data.\n\n" +
+      "Nome: " + nome + "\n" +
+      "WhatsApp: " + tel + "\n" +
+      "Carro: " + carro + "\n" +
+      "Proteção: " + servico + "\n" +
+      "Agendamento: " + prazo;
+
+    window.open(linkZap(msg), "_blank", "noopener");
+  });
+
+  /* ---- revelação no scroll ---- */
+  var reduzir = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!reduzir && "IntersectionObserver" in window){
+    var obs = new IntersectionObserver(function(entradas){
+      entradas.forEach(function(en){
+        if (en.isIntersecting){
+          en.target.classList.add("visivel");
+          obs.unobserve(en.target);
+        }
+      });
+    }, {threshold:.12, rootMargin:"0px 0px -8% 0px"});
+    document.querySelectorAll(".revela").forEach(function(el){ obs.observe(el); });
+  } else {
+    document.querySelectorAll(".revela").forEach(function(el){ el.classList.add("visivel"); });
+  }
+
+  document.getElementById("ano").textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
